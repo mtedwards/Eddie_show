@@ -92,6 +92,68 @@ gulp.task('cssmin', function(){
 
 
 
+/**
+ * Concatenate and transform JavaScript.
+ *
+ * https://www.npmjs.com/package/gulp-concat
+ * https://github.com/babel/gulp-babel
+ * https://www.npmjs.com/package/gulp-sourcemaps
+ */
+gulp.task( 'concat', () =>
+    gulp.src([
+      'js/responsive-nav.js',
+      'js/app.js'
+    ])
+
+		// Deal with errors.
+		.pipe( plumber(
+			{'errorHandler': handleErrors}
+		) )
+
+		// Start a sourcemap.
+		.pipe( sourcemaps.init() )
+
+		// Convert ES6+ to ES2015.
+		.pipe( babel( {
+			'presets': [ 'env']
+		} ) )
+
+		// Concatenate partials into a single script.
+		.pipe( concat( 'production.js' ) )
+
+		// Append the sourcemap to project.js.
+		.pipe( sourcemaps.write() )
+
+		// Save project.js
+		.pipe( gulp.dest( './build' ) )
+		.pipe( browserSync.stream() )
+);
+
+/**
+  * Minify compiled JavaScript.
+  *
+  * https://www.npmjs.com/package/gulp-uglify
+  */
+gulp.task( 'uglify', [ 'concat' ], () =>
+    gulp.src([
+      'build/production.js'
+    ])
+		.pipe( plumber( {'errorHandler': handleErrors} ) )
+		.pipe( rename( {'suffix': '.min'} ) )
+		.pipe( babel( {
+			'presets': [
+				[ 'env']
+			]
+		} ) )
+		.pipe( uglify( {
+			'mangle': false
+		} ) )
+		.pipe( gulp.dest( 'build' ) )
+);
+
+
+
+
 
 /**
  * Process tasks and reload browsers on file changes.
@@ -113,9 +175,11 @@ gulp.task( 'watch', function() {
 	// Run tasks when files change.
 
 	gulp.watch( paths.sass, [ 'sass' ] );
-	// gulp.watch( paths.scripts, [ 'scripts' ] );
-	// gulp.watch( paths.concat_scripts, [ 'scripts' ] );
+	gulp.watch( paths.scripts, [ 'scripts' ] );
+	gulp.watch( paths.php, [ 'markup' ] );
 
 } );
 
-gulp.task( 'default', [ 'cssmin' ] );
+gulp.task( 'markup', browserSync.reload );
+gulp.task( 'scripts', [ 'uglify' ] );
+gulp.task( 'default', [ 'cssmin', 'scripts' ] );

@@ -1,0 +1,132 @@
+.nav-collapse ul {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: block;
+  list-style: none;
+  @include breakpoint($small) {
+    display: flex;
+		justify-content: center;
+  }
+}
+
+.nav-collapse li {
+  width: 100%;
+  display: block;
+  border-bottom: 1px solid #eee;
+
+  a {
+    padding: 0.5em 0;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    color: $primary-color;
+  }
+
+  @include breakpoint($small) {
+    width: auto;
+    text-align: center;
+    padding: 0 1em;
+    border-bottom: none;
+    &.mobile-show {
+      display: none;
+    }
+    a {
+      font-family: $heading-font-family;
+      color: #222;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    &.current_page_item a, a:hover {
+      color: $primary-color;
+    }
+  }
+}
+
+.js .nav-collapse {
+  clip: rect(0 0 0 0);
+  max-height: 0;
+  position: absolute;
+  display: block;
+  overflow: hidden;
+  zoom: 1;
+}
+
+.nav-collapse.opened {
+  max-height: 9999px;
+}
+
+.nav-toggle {
+  width: 100%;
+  background: $primary-color;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 1.2em;
+  text-decoration: none;
+  display: block;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  &.active {
+    color: #fff;
+  }
+  &:focus, &:active {
+    color: #fff;
+  }
+  &:hover {
+    background: darken($primary-color, 10%);
+    color: #fff;
+  }
+}
+
+@include breakpoint($small) {
+  .js .nav-collapse {
+    position: relative;
+  }
+  .js .nav-collapse.closed {
+    max-height: none;
+  }
+  .nav-toggle {
+    display: none;
+  }
+}
+
+
+/// If we want to right aline the menu at large sizes
+
+@include breakpoint($large) {
+  .nav-collapse ul {
+    justify-content: flex-end;
+    height: 100%;
+  }
+  .nav-collapse li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 1em;
+  }
+  header.site-header {
+    display: flex;
+  }
+  .site-branding {
+    text-align: left;
+  }
+  .main-navigation {
+    flex: 1;
+    text-align: right;
+    display: block;
+  }
+  .site-header .main-navigation > div {
+    height: 100%;
+    .nav-menu {
+      height: 100%;
+    }
+  }
+}
