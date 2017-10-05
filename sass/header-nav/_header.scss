@@ -5,6 +5,22 @@ header.site-header {
 .site-branding {
   text-align: center;
   .site-title {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+  }
+  p.site-title {
+    font-size: $h1-mobile;
+    margin-bottom: 0;
+    line-height: 1.2;
+    @include breakpoint($small) {
+      font-size: $h1;
+      font-weight: $heading-font-weight;
+    }
+  }
+}
+
+p.site-description {
+  @include breakpoint($small) {
     margin-bottom: 0;
   }
 }

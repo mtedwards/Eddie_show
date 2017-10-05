@@ -101,6 +101,7 @@ gulp.task('cssmin', function(){
  */
 gulp.task( 'concat', () =>
     gulp.src([
+      'node_modules/@fancyapps/fancybox/dist/jquery.fancybox.js',
       'js/responsive-nav.js',
       'js/app.js'
     ])
@@ -166,7 +167,7 @@ gulp.task( 'watch', function() {
 	browserSync( {
 		'open': true,             // Open project in a new tab?
 		'injectChanges': true,     // Auto inject changes instead of full reload.
-		'proxy': 'ehd-starter.dev',         // Use the local dev sute
+		'proxy': 'eddie.dev',         // Use the local dev sute
 		'watchOptions': {
 			'debounceDelay': 1000  // Wait 1 second before injecting.
 		}
