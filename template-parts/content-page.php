@@ -22,6 +22,10 @@
 				get_template_part( 'template-parts/modules/image', 'gallery' );
 			}
 
+			if(is_page_template ( 'video-gallery-page.php' )) {
+				get_template_part( 'template-parts/modules/video', 'gallery' );
+			}
+
 			wp_link_pages( array(
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', '_eddie' ),
 				'after'  => '</div>',

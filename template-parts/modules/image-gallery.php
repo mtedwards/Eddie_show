@@ -2,7 +2,7 @@
   $images = get_field('gallery');
 
   if($images) { ?>
-    <div class="content-grid">
+    <div class="content-grid large-3">
       <?php foreach($images as $image) { ?>
         <div class="grid__item">
           <a href="<?php echo $image['sizes']['large']; ?>" data-fancybox="group" data-caption="<?php echo $image['caption']; ?>">

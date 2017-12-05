@@ -167,3 +167,5 @@ require get_template_directory() . '/inc/extras.php';
  */
 
 require get_template_directory() . '/inc/hooks.php';
+
+require get_template_directory() . '/inc/video-functions.php';
