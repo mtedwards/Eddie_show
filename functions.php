@@ -101,7 +101,7 @@ add_action( 'widgets_init', '_eddie_widgets_init' );
  * Enqueue scripts and styles.
  */
 function _eddie_scripts() {
-	if (strpos($_SERVER['SERVER_NAME'],'.dev') !== false) {
+	if (strpos($_SERVER['SERVER_NAME'],'.local') !== false) {
 		/* DEV SITE */
 		 wp_register_style( '_eddie-style', get_template_directory_uri() . '/build/style.css', array(), '201709181438', 'all' );
 		 wp_register_script( '_eddie-script', get_template_directory_uri() . '/build/production.js', array('jquery'), '201709181438', true );
