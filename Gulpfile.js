@@ -175,11 +175,11 @@ gulp.task( 'watch', function() {
 
 	// Run tasks when files change.
 
-	gulp.watch( paths.sass, [ 'sass' ] );
+	gulp.watch( paths.sass, [ 'sass', 'cssmin' ] );
 	gulp.watch( paths.scripts, [ 'scripts' ] );
 	gulp.watch( paths.php, [ 'markup' ] );
 
-} );
+});
 
 gulp.task( 'markup', browserSync.reload );
 gulp.task( 'scripts', [ 'uglify' ] );

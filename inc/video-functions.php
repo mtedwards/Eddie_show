@@ -48,7 +48,7 @@ function get_youtube_details($video_url) {
 	$vidDetails = get_transient( $transName );
 
 	if ( false === $vidDetails ) {
-  	$image = 'http://img.youtube.com/vi/' . $videoId . '/maxresdefault.jpg';
+  	$image = 'http://img.youtube.com/vi/' . $videoId . '/mqdefault.jpg';
 		$video_url = 'http://www.youtube.com/embed/' . $videoId;
 
 		$vidDetails = array();
