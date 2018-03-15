@@ -26,6 +26,10 @@
 				get_template_part( 'template-parts/modules/video', 'gallery' );
 			}
 
+			if(is_page_template ( 'cast-page.php' )) {
+				get_template_part( 'template-parts/modules/people', 'list' );
+			}
+
 			wp_link_pages( array(
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', '_eddie' ),
 				'after'  => '</div>',
