@@ -18,12 +18,12 @@ get_header(); ?>
 			get_template_part( 'template-parts/content', get_post_type() );
 
 		?>
-			<div class="clearfix">
-				 <div class="alignleft">
+			<div class="single-article-nav">
+				 <div class="left">
 						<?php previous_post_link('%link', '<< %title'); ?>
 
 	 			</div>
-	 			<div class="alignright">
+	 			<div class="right">
 	 				<?php next_post_link('%link', '%title >>'); ?>
 	 			</div>
 			</div>
