@@ -44,6 +44,7 @@ if ( ! function_exists( '_eddie_setup' ) ) :
 
 		// add_image_size( 'name-of-size', width, height, cropped (true or false) );
 		add_image_size( 'gallery-thumb', 600, 400, true ); // 6 x 4 crop
+		add_image_size( 'headshot-square', 600, 600, true ); // 1 x 1 crop
 
 
 		// This theme uses wp_nav_menu() in one location.

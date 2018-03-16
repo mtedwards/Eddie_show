@@ -1,28 +1,37 @@
-.content-grid {
+.content-grid, .people-list {
   // display: inline-block;
   // text-align: center;
   margin: 1em 0;
 
   .grid__item {
+    .ppl-heading {
+      line-height: normal;
+      text-align: center;
+      h4 {
+        margin: 0 0 0.2rem;
+      }
+    }
     line-height: 0;
     width: 100%;
     display: inline-block;
     vertical-align: top;
     margin: 0.5em 0 0;
     text-align: left;
+    a img {
+      border: 1px solid $accent-color;
+
+      &:hover {
+        border: 1px solid darken($accent-color, 15%);
+      }
+    }
 
     @include breakpoint($small) {
-      width: 45%;
+      width: 32%;
       margin: 0.5em 0.5em 0 0;
     }
-  }
-
-  &.large-3 {
-    .grid__item {
-      @include breakpoint($large) {
-        width: 32%;
-        margin: 0.5em 0.5em 0 0;
-      }
+    @include breakpoint($large) {
+      width: 19%;
+      margin: 0.5em 0.5em 0 0;
     }
   }
   &.large-2 {
@@ -36,7 +45,7 @@
 }
 
 @supports (display:flex) {
-  .content-grid {
+  .content-grid, .people-list {
     display: flex;
     flex-wrap: wrap;
     margin: 1em 0 1em -0.5em;
@@ -45,25 +54,20 @@
 
     .grid__item {
       margin: 0;
-      padding: 0 0 0.5em 0;
+      padding: 0 0 0 0;
       flex: 1 0 100%;
       width: auto;
       margin: initial;
       @include breakpoint($small) {
-        padding: 0 0 0.5em 0.5em;
-        flex: 1 0 50%;
+        padding: 0 0 0 0.5em;
+        flex: 1 0 33.3%;
         margin: 0 0 0 0;
         width: auto;
       }
-    }
-
-    &.large-3 {
-      .grid__item {
-        @include breakpoint($large) {
-          flex: 1 0 33.3%;
-          margin: 0 0 0 0;
-          width: auto;
-        }
+      @include breakpoint($large) {
+        flex: 1 0 20%;
+        margin: 0 0 0 0;
+        width: auto;
       }
     }
     &.large-2 {
@@ -79,22 +83,25 @@
 }
 
 @supports (display:grid) {
-  .content-grid {
+  .content-grid, .people-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20em, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(11em, 1fr));
     grid-gap: 0.5em;
     margin: initial;
-    &.large-3 {
-      grid-template-columns: repeat(auto-fill, minmax(16em, 1fr));
-    }
+  @include breakpoint($large) {
     &.large-2 {
       grid-template-columns: repeat(auto-fill, minmax(20em, 1fr));
     }
+  }
     .grid__item {
       padding: 0 0 0 0;
       margin: 0 0 0 0;
       max-width: none;
     }
+  }
+  .people-list {
+    grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
+    grid-gap: 1em;
   }
 }
 
@@ -105,6 +112,7 @@
       height: 0;
       padding-bottom: 56%;
       background-size: cover;
+      background-position: center center;
       position: relative;
       opacity: 1;
       transition: 0.5s opacity ease;
