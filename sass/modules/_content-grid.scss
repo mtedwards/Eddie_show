@@ -124,3 +124,10 @@
     }
   }
 }
+
+.excerpt-wrap {
+  .post-excerpt {
+    @extend .clearfix;
+    border-bottom: $border-width $border-style $border-color;
+  }
+}

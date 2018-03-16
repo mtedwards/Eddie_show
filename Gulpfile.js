@@ -177,7 +177,7 @@ gulp.task( 'watch', function() {
 
 	gulp.watch( paths.sass, [ 'sass', 'cssmin' ] );
 	gulp.watch( paths.scripts, [ 'scripts' ] );
-	gulp.watch( paths.php, [ 'markup' ] );
+	gulp.watch( paths.php, browserSync.reload );
 
 });
 
